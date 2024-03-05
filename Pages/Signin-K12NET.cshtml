@@ -1,0 +1,31 @@
+﻿@page
+@model YourSite.Pages.Signin_K12NETModel
+@{
+}
+
+@if (Model.UserInfo != null)
+{
+    <div>
+        Logged in as @Model.UserInfo["sub"]
+    </div>
+
+    <div><a href="~/">Home Page</a></div>
+}
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    @foreach (var key in Model.UserInfo)
+    {
+        <tr>
+            <td>@key.Key</td>
+            <td>@key.Value</td>
+        </tr>
+    }
+</table>
+

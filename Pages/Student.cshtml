@@ -1,0 +1,14 @@
+﻿@page
+@model YourSite.Pages.StudentModel
+@{
+}
+
+<pre id="jsonData"></pre>
+
+<script>
+    var jsonData = @Html.Raw(@Model.StudentInfo);
+
+    var prettyJson = JSON.stringify(jsonData, null, 2);
+
+    document.getElementById("jsonData").textContent = prettyJson;
+</script>

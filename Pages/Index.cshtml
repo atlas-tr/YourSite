@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">
+        <span>Welcome</span>
+
+        @if (Model.User.Identity.IsAuthenticated)
+        {
+            <span>@Model.User.Identity.Name</span>
+        }
+        else
+        {
+            <span>Guest</span>
+        }
+    </h1>
+
+    @if (Model.User.Identity.IsAuthenticated)
+    {
+        <p class="lead">You are logged in.</p>
+
+        <a href="~/Logout">Logout</a>
+
+    }
+    else
+    {
+        <p class="lead">You are not logged in.</p>
+
+        <div class="text-center mt-5">
+            <a href="@(ViewData["url"])/GWCore.Web/connect/authorize?response_type=code&client_id=@(ViewData["client_id"])&redirect_uri=@Uri.EscapeDataString((string)ViewData["redirect_uri"])&scope=openid profile">Login with K12NET</a>
+        </div>
+    }
+
+</div>
